@@ -8,9 +8,9 @@ Install requires packages:
 	$ sudo apt-get install python3 python3-pip python3-requests python3-virtualenv
 
 ## Setup
-
 	$ tar xvfz noobcash.tar.gz
     $ cd noobcash
+    $ sudo apt install virtualenv
     $ virtualenv .venv
     $ source .venv/bin/activate
     $ pip3 install -r requirements.txt
