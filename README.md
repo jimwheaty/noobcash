@@ -10,10 +10,11 @@ Install requires packages:
 ## Setup
 	$ tar xvfz noobcash.tar.gz
     $ cd noobcash
-    $ sudo apt install virtualenv
+    $ sudo apt install virtualenv sshpass
     $ virtualenv .venv
     $ source .venv/bin/activate
     $ pip3 install -r requirements.txt
+
 
 ## Parameters
 You can configure the parameters in noobcash/src/config.py:
@@ -47,4 +48,3 @@ From the client you can give the following commands:
 * `view`                      
 * `view all`                  
 * `exit`                      
-
