@@ -156,7 +156,7 @@ def view_transactions():
         return jsonify(f'No transactions yet\n'), 200
 
     if len(node.blockchain) == 1:
-        return jsonify(f'id0 -> id0 {NUMBER_OF_NODES * 100} NBC\n'), 200
+        return jsonify(f'id0 -> id0 {NUMBER_OF_NODES * STARTING_NBC_PER_NODE} NBC\n'), 200
 
     transactions = node.blockchain[-1].transactions
     data = []
@@ -173,7 +173,7 @@ def view_all_transactions():
     if len(node.blockchain) == 0:
         return json.dumps(f'No transactions yet\n'), 200
 
-    data = [f'id0 -> id0 {NUMBER_OF_NODES * 100} NBC\n']
+    data = [f'id0 -> id0 {NUMBER_OF_NODES * STARTING_NBC_PER_NODE} NBC\n']
 
     for block in node.blockchain[1:]:
         for transaction in block.transactions:
