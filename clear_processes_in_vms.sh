@@ -6,8 +6,9 @@ declare -a VMS=("snf-12153.ok-kno.grnetcloud.net" "snf-12154.ok-kno.grnetcloud.n
 arraylength=${#PASSWORDS[@]}
 declare -a IPs=("1" "2" "5" "3" "4")
 
+gnome-terminal -- bash -c "/usr/bin/sshpass -p ${PASSWORDS[0]} /usr/bin/ssh $USERNAME${VMS[0]} 'cd noobcash; source .venv/bin/activate; python3 shutdown.py 192.168.0."${IPs[0]}"'"
 # use for loop to read all values and indexes
-for (( i=0; i<$arraylength; i++ ));
+for (( i=1; i<$arraylength; i++ ));
 do
-    gnome-terminal -- bash -c "/usr/bin/sshpass -p ${PASSWORDS[$i]} /usr/bin/ssh $USERNAME${VMS[$i]} 'cd noobcash; source .venv/bin/activate; python3 shutdown.py 192.168.0."${IPs[$i]}"'"
+        gnome-terminal -- bash -c "/usr/bin/sshpass -p ${PASSWORDS[0]} /usr/bin/ssh $USERNAME${VMS[0]} '/usr/bin/ssh $USERNAME${VMS[$i]} \"cd noobcash; source .venv/bin/activate; python3 shutdown.py 192.168.0.${IPs[$i]} \"'" 
 done
