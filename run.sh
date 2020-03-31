@@ -1,5 +1,5 @@
 #!/bin/bash
-python3 calc_final_state.py
+# python3 calc_final_state.py
 for i in {0..4}
 do
     gnome-terminal -- bash -c "source .venv/bin/activate; cd src; python3 rest.py -i 127.0.0.1 -p 500$i; bash" > /dev/null 2>&1

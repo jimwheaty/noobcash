@@ -344,6 +344,22 @@ def client_connect():
             return jsonify("Sorry, we are full...\n"), 403
 
         
+# Shutdown
+#.......................................................................................
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
+
+@app.route('/shutdown', methods=['GET'])
+def shutdown():
+    shutdown_server()
+    return jsonify('Server shutting down...')
+
+
+
+
 
 # TODO Make it work for public IPs
 if __name__ == '__main__':
