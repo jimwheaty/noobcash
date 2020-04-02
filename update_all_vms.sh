@@ -5,11 +5,11 @@ HOST="snf-12153.ok-kno.grnetcloud.net"
 PATH=":~/noobcash"
 PASSWORD="RlYISVmt8v"
 echo 'copying files to snf-12153...'
-/usr/bin/sshpass -p ${PASSWORD}  /usr/bin/scp * ${USERNAME}${HOST}${PATH}
+/usr/bin/sshpass -p ${PASSWORD}  /usr/bin/scp -r 5nodes 10nodes *.sh *.py ${USERNAME}${HOST}${PATH}
 
 cd src/
 
-/usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp * ${USERNAME}${HOST}${PATH}/src
+/usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp *.py ${USERNAME}${HOST}${PATH}/src
 echo "done"
 echo "copying files to remote vms"
 

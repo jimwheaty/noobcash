@@ -1,12 +1,19 @@
 f=[0,0,0,0,0]
 import numpy as np
-files = np.random.permutation(5)
-for i in range(5):
-    f[i] = open("5nodes/transactions"+str(files[i])+'.txt', "r")
+from config import *
 
-bal=[10000,10000,10000,10000,10000]
+ 
+files = np.random.permutation(NUMBER_OF_NODES)
+for i in range(NUMBER_OF_NODES):
+    f[i] = open(str(NUMBER_OF_NODES)+"nodes/transactions"+str(files[i])+'.txt', "r")
+
+if NUMBER_OF_NODES == 5:
+    bal=[10000,10000,10000,10000,10000]
+elif NUMBER_OF_NODES == 10:
+    bal=[10000,10000,10000,10000,10000,10000,10000,10000,10000,10000]
+
 cnt= 0
-for i in range(5): #while there is some valid transaction to make
+for i in range(NUMBER_OF_NODES): #while there is some valid transaction to make
     while  1: #if you have money and haven't finished your transactions
         cnt+=1
         line = f[i].readline()

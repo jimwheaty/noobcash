@@ -12,9 +12,9 @@ host = '192.168.0.1:5000'
 broadcast = Broadcast(host)
 broadcast.peers = ['192.168.0.2:5000', '192.168.0.3:5000', '192.168.0.4:5000', '192.168.0.5:5000']
 
-if NUMBER_OF_NODES == 100:
-    num_of_transactions = 1000
-else: num_of_transactions = 500
+if NUMBER_OF_NODES == 10:
+    num_of_transactions = 30 #1000
+else: num_of_transactions = 15 #500
 
 while 1:
     # sleep(10 sec)
@@ -34,7 +34,7 @@ while 1:
         item = sorted_blockchain_lengths[0]
         length = int(item['data'])
 
-    if length == 1 + num_of_transactions //  BLOCK_CAPACITY:
+    if length >= 1 + num_of_transactions //  BLOCK_CAPACITY:
         
         url = f'http://{item["host"]}/get_blockchain'
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}

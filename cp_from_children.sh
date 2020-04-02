@@ -10,9 +10,18 @@ cd src/
 
 for (( i=0; i<${arraylength}; i++ )); 
 do
-    echo  ${PASSWORDS[$i]} /usr/bin/scp  ${USERNAME}${VMS[$i]}${PATH}/src/last_transaction.txt ./last_transaction_${NAMES[$i]}.txt
-	/usr/bin/sshpass -p ${PASSWORDS[$i]} /usr/bin/scp  ${USERNAME}${VMS[$i]}${PATH}/src/last_transaction.txt last_transaction_${NAMES[$i]}.txt
-    /usr/bin/sshpass -p ${PASSWORDS[$i]} /usr/bin/scp  ${USERNAME}${VMS[$i]}${PATH}/src/first_transaction.txt first_transaction_${NAMES[$i]}.txt
+    echo  ${PASSWORDS[$i]} /usr/bin/scp  ${USERNAME}${VMS[$i]}${PATH}/src/last_transaction_5000.txt ./last_transaction_${NAMES[$i]}_5000.txt
+	/usr/bin/sshpass -p ${PASSWORDS[$i]} /usr/bin/scp  ${USERNAME}${VMS[$i]}${PATH}/src/last_transaction_5000.txt last_transaction_${NAMES[$i]}_5000.txt
+    /usr/bin/sshpass -p ${PASSWORDS[$i]} /usr/bin/scp  ${USERNAME}${VMS[$i]}${PATH}/src/first_transaction_5000.txt first_transaction_${NAMES[$i]}_5000.txt
+
+    /usr/bin/sshpass -p ${PASSWORDS[$i]} /usr/bin/ssh -o StrictHostKeyChecking=no  ${USERNAME}${VMS[$i]} 'cd noobcash/src; rm *.txt'
+
+done
+for (( i=0; i<${arraylength}; i++ )); 
+do
+    echo  ${PASSWORDS[$i]} /usr/bin/scp  ${USERNAME}${VMS[$i]}${PATH}/src/last_transaction_5001.txt ./last_transaction_${NAMES[$i]}_5001.txt
+	/usr/bin/sshpass -p ${PASSWORDS[$i]} /usr/bin/scp  ${USERNAME}${VMS[$i]}${PATH}/src/last_transaction_5001.txt last_transaction_${NAMES[$i]}_5001.txt
+    /usr/bin/sshpass -p ${PASSWORDS[$i]} /usr/bin/scp  ${USERNAME}${VMS[$i]}${PATH}/src/first_transaction_5001.txt first_transaction_${NAMES[$i]}_5001.txt
 
     /usr/bin/sshpass -p ${PASSWORDS[$i]} /usr/bin/ssh -o StrictHostKeyChecking=no  ${USERNAME}${VMS[$i]} 'cd noobcash/src; rm *.txt'
 

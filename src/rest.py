@@ -68,8 +68,8 @@ def stress_test():
 def create_transaction():
     #start transaction timestamp
     timestamp = str(datetime.datetime.now())
-    f = open("first_transaction.txt", "w")
-    if os.stat("first_transaction.txt").st_size == 0:
+    f = open("first_transaction_"+str(port)+".txt", "w")
+    if os.stat("first_transaction_"+str(port)+".txt").st_size == 0:
         f.write(timestamp)
     f.close()
 
@@ -283,7 +283,7 @@ def receive_transaction():
         #finish transaction timestamp
         import datetime
         timestamp = str(datetime.datetime.now())
-        f = open("last_transaction.txt", "w")
+        f = open("last_transaction_"+str(port)+".txt", "w")
         f.write(timestamp)
         f.close()
 

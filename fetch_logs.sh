@@ -1,20 +1,19 @@
 #!/bin/bash
 
+NAME=${1?Error: no name given}
 USERNAME="user@"
 HOST="snf-12153.ok-kno.grnetcloud.net"
 PATH=":~/noobcash"
 PASSWORD="RlYISVmt8v"
 echo 'copying files from snf-12153...'
 
-cd src/
+/usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/last_transaction_5000.txt ./measurements/$NAME/last_transaction_12153_5000.txt
+/usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/first_transaction_5000.txt ./measurements/$NAME/first_transaction_12153_5000.txt 
 
-/usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/last_transaction.txt ../measurements/last_transaction_12153.txt
-/usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/first_transaction.txt ../measurements/first_transaction_12153.txt
+/usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/last_transaction_5001.txt ./measurements/$NAME/last_transaction_12153_5001.txt 
+/usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/first_transaction_5001.txt ./measurements/$NAME/first_transaction_12153_5001.txt 
 
 /usr/bin/sshpass -p ${PASSWORD} /usr/bin/ssh -o StrictHostKeyChecking=no  ${USERNAME}${HOST} 'cd noobcash/src; rm *.txt'
-
-
-
 
 echo "done"
 echo "copying files from remote vms"
@@ -30,11 +29,16 @@ arraylength=4
 
 for (( i=0; i<${arraylength}; i++ )); 
 do
-    echo  ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/last_transaction_${NAMES[$i]}.txt last_transaction_${NAMES[$i]}.txt
-	/usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/last_transaction_${NAMES[$i]}.txt ../measurements/last_transaction_${NAMES[$i]}.txt
-    /usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/first_transaction_${NAMES[$i]}.txt ../measurements/first_transaction_${NAMES[$i]}.txt
-
+    # echo  ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/last_transaction_${NAMES[$i]}_5000.txt ./measurements/$NAME/last_transaction_${NAMES[$i]}_5000.txt 
+	/usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/last_transaction_${NAMES[$i]}_5000.txt ./measurements/$NAME/last_transaction_${NAMES[$i]}_5000.txt 
+    /usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/first_transaction_${NAMES[$i]}_5000.txt ./measurements/$NAME/first_transaction_${NAMES[$i]}_5000.txt 
 done
 
+for (( i=0; i<${arraylength}; i++ )); 
+do
+    # echo  ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/last_transaction_${NAMES[$i]}_5001.txt last_transaction_${NAMES[$i]}_5001.txt
+	/usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/last_transaction_${NAMES[$i]}_5001.txt ./measurements/$NAME/last_transaction_${NAMES[$i]}_5001.txt
+    /usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/first_transaction_${NAMES[$i]}_5001.txt ./measurements/$NAME/first_transaction_${NAMES[$i]}_5001.txt 
+done
 
 

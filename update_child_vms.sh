@@ -14,13 +14,13 @@ arraylength=${#PASSWORDS[@]}
 # use for loop to read all values and indexes
 for (( i=0; i<${arraylength}; i++ ));
 do
-	/usr/bin/sshpass -p ${PASSWORDS[$i]}  /usr/bin/scp client.py requirements.txt shutdown.py ${USERNAME}${VMS[$i]}${PATH}
+	/usr/bin/sshpass -p ${PASSWORDS[$i]}  /usr/bin/scp -r 5nodes 10nodes client.py requirements.txt shutdown.py ${USERNAME}${VMS[$i]}${PATH}
 done
 
 cd src/
 
 for (( i=0; i<${arraylength}; i++ )); 
 do
-	/usr/bin/sshpass -p ${PASSWORDS[$i]}  /usr/bin/scp miner.py block.py config.py rest.py test.py transaction.py broadcast.py node.py ring_node.py transaction_output.py wallet.py ${USERNAME}${VMS[$i]}${PATH}/src
+	/usr/bin/sshpass -p ${PASSWORDS[$i]}  /usr/bin/scp *.py ${USERNAME}${VMS[$i]}${PATH}/src
 
 done
