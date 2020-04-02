@@ -16,6 +16,6 @@ echo 'copying files from snf-12153...'
 /usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/last_block.txt ./measurements/last_block.txt
 /usr/bin/sshpass -p ${PASSWORD} /usr/bin/scp  ${USERNAME}${HOST}${PATH}/src/first_block.txt ./measurements/first_block.txt
 
-/usr/bin/sshpass -p ${PASSWORD} /usr/bin/ssh -o StrictHostKeyChecking=no  ${USERNAME}${HOST} 'cd noobcash/src; rm *.txt'
+/usr/bin/sshpass -p ${PASSWORD} /usr/bin/ssh -o StrictHostKeyChecking=no  ${USERNAME}${HOST} 'cd noobcash/src; rm first_block.txt; rm last_block.txt'
 
 echo "done"
