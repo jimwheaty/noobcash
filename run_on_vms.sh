@@ -16,7 +16,7 @@ do
 done
 
 gnome-terminal -- bash -c "/usr/bin/sshpass -p ${PASSWORDS[0]} /usr/bin/ssh $USERNAME${VMS[0]} 'cd noobcash; source .venv/bin/activate; python3 client.py 192.168.0."${IPs[0]}" 5000';bash" 
-sleep 3
+sleep 9
 for (( i=1; i<$arraylength; i++ ));
 do
     gnome-terminal -- bash -c "/usr/bin/sshpass -p ${PASSWORDS[0]} /usr/bin/ssh $USERNAME${VMS[0]} '/usr/bin/ssh $USERNAME${VMS[$i]} \"cd noobcash; source .venv/bin/activate; python3 client.py 192.168.0.${IPs[$i]} 5000\"';bash" 

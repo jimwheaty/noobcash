@@ -7,6 +7,8 @@ import requests
 import json
 import jsonpickle
 import asyncio
+import datetime
+import os
 
 # Class imports
 from node import Node
@@ -64,6 +66,13 @@ def stress_test():
 
 @app.route('/create_transaction', methods=['POST'])
 def create_transaction():
+    #start transaction timestamp
+    timestamp = str(datetime.datetime.now())
+    f = open("first_transaction.txt", "w")
+    if os.stat("first_transaction.txt").st_size == 0:
+        f.write(timestamp)
+    f.close()
+
     try:
         data = request.get_json()
         id = int(data["id"])
@@ -85,6 +94,11 @@ def create_transaction():
 
 @app.route('/found_block', methods=['POST'])
 def found_block():
+
+
+    #start time block
+
+
     data = request.get_json()
     block = jsonpickle.decode(json.dumps(data["data"]))
 
@@ -265,6 +279,14 @@ def receive_transaction():
 
     try:
         ret = node.validate_transaction(transaction)
+
+        #finish transaction timestamp
+        import datetime
+        timestamp = str(datetime.datetime.now())
+        f = open("last_transaction.txt", "w")
+        f.write(timestamp)
+        f.close()
+
         if ret == 'ok':
             node.commit_transaction(transaction)
             node.add_transaction_to_pending(transaction)

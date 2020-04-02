@@ -18,10 +18,9 @@ args = parser.parse_args()
 n = args.nodes
 verbose = args.verbose
  
-b = Broadcast('test')
-for i in range(n):
-    b.add_peer(f'127.0.0.1:500{i}')
-
+host = '192.168.0.1:5000'  
+b = Broadcast(host)
+b.peers = ['192.168.0.2:5000', '192.168.0.3:5000', '192.168.0.4:5000', '192.168.0.5:5000']
 
 responses = asyncio.run(b.broadcast('get_blockchain', {}, 'GET'))
 responses = list(map(jsonpickle.decode, responses))

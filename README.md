@@ -26,6 +26,19 @@ You can configure the parameters in noobcash/src/config.py:
 
 ## Usage
 
+
+
+
+./update_all_vms.sh
+./run_on_vms.sh
+
+elegxw an mphkan oloi entos 3 sec alliws to kleinw
+paw sto proteleutaio terminal kia grafw balance gia na eleg3w thn orthothta
+
+./clear_processes_in_vms.sh
+
+
+
 First of all start a server for each participant:
 
     $ cd noobcash/src
