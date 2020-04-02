@@ -13,7 +13,12 @@ n = args.nodes
 
 IPs = ["1", "2", "5", "3", "4"]
 b = Broadcast('test')
+
 for i in range(n):
     b.add_peer(f'192.168.0.{IPs[i]}:5000')
+
+if n == 10:
+    for i in range(n):
+        b.add_peer(f'192.168.0.{IPs[i]}:5001')
 
 responses = asyncio.run(b.broadcast('stress_test', n, 'POST'))

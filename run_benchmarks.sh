@@ -8,7 +8,7 @@ sleep 10
 echo 'done'
 echo 'starting vms and connecting nodes...'
 ./run_on_vms.sh
-sleep 100 #10sec*10nodes (worst case) wait for nodes to connect, fetch_block_times.sh runs rest
+sleep 50 #10sec*10nodes (worst case) wait for nodes to connect, fetch_block_times.sh runs rest
 echo 'done'
 echo 'waiting for blockchain to be built and fetching measurements...'
 ./fetch_block_times.sh; ./fetch_logs.sh #fetch_logs.sh should run after all transactions are made. fetch_block_times.sh does the waiting
@@ -17,7 +17,9 @@ echo 'done'
 
 #TODO!!!!!!!!
 #kati san to parakatw:
-
+cap=[1,5,10]
+diff=[4,5]
+nodes=[5,10]
 #$configurations = [... ...   ....]
 # for $conf in $configurations:
 #     cp $conf ./src/config.py

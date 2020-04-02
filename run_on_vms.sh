@@ -14,13 +14,13 @@ for (( i=1; i<$arraylength; i++ ));
 do
     gnome-terminal -- bash -c "/usr/bin/sshpass -p ${PASSWORDS[0]} /usr/bin/ssh $USERNAME${VMS[0]} '/usr/bin/ssh $USERNAME${VMS[$i]} \"cd noobcash; source .venv/bin/activate; cd src; python3 rest.py -i 192.168.0.${IPs[$i]} -p 5000\"';bash" 
 done
-
+sleep 2
 gnome-terminal -- bash -c "/usr/bin/sshpass -p ${PASSWORDS[0]} /usr/bin/ssh $USERNAME${VMS[0]} 'cd noobcash; source .venv/bin/activate; python3 client.py 192.168.0."${IPs[0]}" 5000';bash" 
-sleep 9
+sleep 5
 for (( i=1; i<$arraylength; i++ ));
 do
     gnome-terminal -- bash -c "/usr/bin/sshpass -p ${PASSWORDS[0]} /usr/bin/ssh $USERNAME${VMS[0]} '/usr/bin/ssh $USERNAME${VMS[$i]} \"cd noobcash; source .venv/bin/activate; python3 client.py 192.168.0.${IPs[$i]} 5000\"';bash" 
-    sleep 3
+    sleep 5
 done
 
 gnome-terminal -- bash -c "/usr/bin/sshpass -p ${PASSWORDS[0]} /usr/bin/ssh $USERNAME${VMS[0]} 'cd noobcash; source .venv/bin/activate; python3 stress_test.py';bash" 

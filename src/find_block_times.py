@@ -24,13 +24,15 @@ while 1:
     #     res = find_first_last_timestamp(c, 153)
     #     write(res,'res.txt')
 
-    time.sleep(1)
+    time.sleep(30)
     
     responses = asyncio.run(broadcast.broadcast('get_blockchain_length', {}, 'GET'))
     blockchain_lengths = map(jsonpickle.decode, responses)
     sorted_blockchain_lengths = sorted(blockchain_lengths, key=lambda item: item['data'], reverse=True)
-    item = sorted_blockchain_lengths[0]
-    length = int(item['data'])
+    length = 0
+    if len(sorted_blockchain_lengths)>0:
+        item = sorted_blockchain_lengths[0]
+        length = int(item['data'])
 
     if length == 1 + num_of_transactions //  BLOCK_CAPACITY:
         
