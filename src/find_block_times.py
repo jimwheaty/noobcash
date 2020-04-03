@@ -34,7 +34,7 @@ while 1:
         item = sorted_blockchain_lengths[0]
         length = int(item['data'])
 
-    if length >= 1 + num_of_transactions //  BLOCK_CAPACITY:
+    if length >= (1 + num_of_transactions) //  (3*BLOCK_CAPACITY):
         
         url = f'http://{item["host"]}/get_blockchain'
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
