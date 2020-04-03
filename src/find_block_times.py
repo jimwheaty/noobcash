@@ -13,8 +13,8 @@ broadcast = Broadcast(host)
 broadcast.peers = ['192.168.0.2:5000', '192.168.0.3:5000', '192.168.0.4:5000', '192.168.0.5:5000']
 
 if NUMBER_OF_NODES == 10:
-    num_of_transactions = 30 #1000
-else: num_of_transactions = 15 #500
+    num_of_transactions = 1009 #30
+else: num_of_transactions = 504 #15
 
 while 1:
     # sleep(10 sec)
